@@ -2,22 +2,25 @@ version: '3'
 
 services:
   server:
-    build: ./
+    build:
+      context: .
+    container_name: app
     ports:
       - 8080:8080
     links:
-      - database
+      - db
     depends_on:
-      - database
-  database:
-    container_name: postgres_db
-    image: postgres:9.6
-    volumes:
-      - postgres_db:/var/lib/postgresql/data
+      - db
+  db:
+    container_name: db
+    image: 'postgres:13.1-alpine'
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=api
-      - PGDATA=/var/lib/postgresql/data/pgdata
+      - ALLOW_IP_RANGE=0.0.0.0/0
+    expose:
+      - 5432
     ports:
       - 5432:5432
+    restart: on-failure

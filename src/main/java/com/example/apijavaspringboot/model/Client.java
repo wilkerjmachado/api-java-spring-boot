@@ -10,7 +10,16 @@ public class Client extends AbstractEntity{
     private String name;
 
     @Column(nullable = false)
-    private int age;
+    private Integer age;
+
+    public Client(String name, Integer age) {
+        this();
+        this.name = name;
+        this.age = age;
+    }
+
+    public Client() {
+    }
 
     public String getName() {
         return name;
@@ -20,11 +29,11 @@ public class Client extends AbstractEntity{
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 }

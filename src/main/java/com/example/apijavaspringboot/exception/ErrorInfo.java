@@ -14,6 +14,26 @@ public class ErrorInfo {
 
     private Throwable ex;
 
+    public ErrorInfo() {
+    }
+
+    public ErrorInfo(String url, String message, int errorCode) {
+        this();
+        this.url = url;
+        this.message = message;
+        this.errorCode = errorCode;
+    }
+
+    public ErrorInfo(String url, String message, Map<String, String> errors, int errorCode) {
+        this(url, message, errorCode);
+        this.errors = errors;
+    }
+
+    public ErrorInfo(String url, String message, Map<String, String> errors, int errorCode, Throwable ex) {
+        this(url, message, errors, errorCode);
+        this.ex = ex;
+    }
+
     public String getUrl() {
         return url;
     }

@@ -62,8 +62,8 @@ public abstract class BaseApi<E extends AbstractEntity, S extends BaseService<E>
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/find")
-    public ResponseEntity<List<E>> find(@RequestBody E example) {
+    public ResponseEntity<List<E>> find(@RequestBody E entity) {
 
-        return ResponseEntity.ok(this.getService().find(example));
+        return ResponseEntity.ok(this.getService().find(entity));
     }
 }
